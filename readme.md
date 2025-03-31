@@ -83,7 +83,7 @@ GET /links/{short_code}/stats
 
 ![удаление протухшей ссылки](images/deleted_exp.png)
 
-![удаление протухшей ссылки](images/lget_links_22.png)
+![удаление протухшей ссылки](images/get_links_22.png)
 
 
 
@@ -102,4 +102,4 @@ GET /links/{short_code}/stats
 
 ![ссылки](images/links.png)
 
-![пользователи](users/tables.png)
+![пользователи](users/users.png)
