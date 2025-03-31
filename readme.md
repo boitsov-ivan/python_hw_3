@@ -102,4 +102,4 @@ GET /links/{short_code}/stats
 
 ![ссылки](images/links.png)
 
-![пользователи](users/users.png)
+![пользователи](images/users.png)
