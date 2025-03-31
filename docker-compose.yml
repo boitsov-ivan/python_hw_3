@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+
+    ports:
+      - "5433:5432"  # Доступ к БД с хоста через 5433 порт
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - network
+
+  app:
+    build: .
+    ports:
+      - "8001:8001"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db  # Имя сервиса как hostname
+      DB_PORT: 5432  # Внутренний порт контейнера с БД
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      SECRET_KEY: ${SECRET_KEY}
+      ALGORITHM: ${ALGORITHM}
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  db_data:  # Теперь объявлен правильно
